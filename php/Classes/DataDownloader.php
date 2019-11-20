@@ -35,7 +35,6 @@ class DataDownloader {
 			$restaurantId = generateUuidV4();
 			$restaurantYelpId = $value->id;
 			$newPictures = self::readDataJson($businessUrlBase . $restaurantYelpId, $yelp);
-			var_dump($newPictures);
 			$restaurantAddress = $value->location->address1;
 			$restaurantLat = $value->coordinates->latitude;
 			$restaurantLng = $value->coordinates->longitude;
@@ -84,7 +83,6 @@ class DataDownloader {
 			} else {
 				$jsonFeatures = $jsonConverted->photos;
 			}
-			var_dump($jsonFeatures);
 			$newRestaurants = \SplFixedArray::fromArray($jsonFeatures);
 		} catch(\Exception $exception) {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
